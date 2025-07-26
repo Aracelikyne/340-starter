@@ -13,8 +13,8 @@ validate.addClassificationRules = () => {
       .trim()
       .isLength({ min: 1 })
       .withMessage("Please provide a classification name.")
-      .isAlphanumeric()
-      .withMessage("Classification name must be alphanumeric."),
+      .isAlpha()
+      .withMessage("Provide a correct classification name."),
   ];
 };
 
