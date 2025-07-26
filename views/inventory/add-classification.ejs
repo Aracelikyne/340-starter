@@ -12,6 +12,6 @@
 <form action="/inv/add-classification" method="post">
     <label for="classification_name">Classification Name:</label>
     <p>NAME MUST BE ALPHABETIC CHARACTERS ONLY.</p>
-    <input type="text" id="classification_name" name="classification_name" title="No spaces or special characters." value="<%= locals.classification_name || '' %>">
+    <input type="text" id="classification_name" name="classification_name" required title="No spaces or special characters." value="<%= locals.classification_name || '' %>">
     <button type="submit">Add Classification</button>
 </form>
