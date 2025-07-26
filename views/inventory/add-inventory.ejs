@@ -13,14 +13,14 @@
 
 <form action="/inv/add-inventory" method="post">
     <label for="inv_make">Make:</label>
-    <input type="text" id="inv_make" name="inv_make" required placeholder="Min of 3 characters">
+    <input type="text" id="inv_make" name="inv_make" required minlength="3" placeholder="Min of 3 characters">
 
     <label for="inv_model">Model:</label>
-    <input type="text" id="inv_model" name="inv_model" required placeholder="Min of 3 characters">
+    <input type="text" id="inv_model" name="inv_model" required minlength="3" placeholder="Min of 3 characters">
 
     <label for="inv_year">Year:</label>
-    <input type="number" id="inv_year" name="inv_year" required placeholder="4-digit year">
-    
+    <input type="number" id="inv_year" name="inv_year" required pattern="\d{4}" placeholder="4-digit year">
+
     <label for="inv_description">Description:</label>
     <textarea id="inv_description" name="inv_description" required></textarea>
     
