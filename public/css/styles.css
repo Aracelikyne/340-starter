@@ -260,20 +260,29 @@ form button:hover {
   margin-left: -1em;
 }
 
-input {
+input,
+textarea {
   transition: background-color 0.3s ease-in-out;
 }
 
-input:required:invalid {
-  background-color: rgb(193, 122, 122);
+
+input:invalid,
+textarea:invalid {
+  background-color: rgb(193, 122, 122); 
 }
 
-input:not(:placeholder-shown):invalid {
-  background-color: rgb(193, 122, 122);
+input:valid,
+textarea:valid {
+  background-color: rgb(122, 193, 122); 
 }
 
-input:not(:placeholder-shown):valid {
-  background-color: rgb(122, 193, 122);
+input:required:placeholder-shown,
+textarea:required:placeholder-shown {
+  background-color: #fff; 
+}
+
+textarea:placeholder-shown {
+    background-color: #fff;
 }
 
 
