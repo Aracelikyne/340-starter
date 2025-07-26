@@ -286,4 +286,15 @@ form button:hover {
   margin-left: -1em;
 }
 
+input:required:invalid {
+  border-left: 5px solid red;
+}
+
+input:not(:placeholder-shown):invalid {
+  border-left: 5px solid red;
+}
+
+input:not(:placeholder-shown):valid {
+  border-left: 5px solid green;
+}
 }
