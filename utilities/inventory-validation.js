@@ -80,56 +80,6 @@ validate.checkClassificationData = async (req, res, next) => {
             errors,
             title: "Add Classification",
             nav,
-            classification_name,
-        })
-        return
-    }
-    next()
-}
-
-/* ******************************
- * Check data and return errors or continue
- * ***************************** */
-validate.checkData = async (req, res, next) => {
-    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
-    let errors = []
-    errors = validationResult(req)
-    if (!errors.isEmpty()) {
-      let nav = await utilities.getNav()
-      let classificationList = await utilities.buildClassificationList(classification_id)
-      res.render("inventory/add-inventory", {
-        errors,
-        title: "Add New Inventory",
-        nav,
-        classificationList,
-        inv_make,
-        inv_model,
-        inv_year,
-        inv_description,
-        inv_image,
-        inv_thumbnail,
-        inv_price,
-        inv_miles,
-        inv_color,
-      })
-      return
-    }
-    next()
-  }
-
-/* ******************************
- * Check classification data and return errors or continue
- * ***************************** */
-validate.checkClassificationData = async (req, res, next) => {
-    const { classification_name } = req.body
-    let errors = []
-    errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        let nav = await utilities.getNav()
-        res.render("inventory/add-classification", {
-            errors,
-            title: "Add Classification",
-            nav,
             classification_name
         })
         return
