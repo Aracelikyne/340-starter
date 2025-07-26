@@ -15,10 +15,10 @@ router.get("/detail/:invId", invController.buildByInvId);
 router.get("/", invController.buildManagement);
 
 // Route to build the add classification view
-router.get("/addClassification", invController.buildAddClassification);
+router.get("/add-classification", invController.buildAddClassification);
 
 //Route to build the add inventory view
-router.get("/addInventory", invController.buildAddInventory);
+router.get("/add-inventory", invController.buildAddInventory);
 
 // Process the new classification data
 router.post(
