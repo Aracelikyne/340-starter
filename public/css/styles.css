@@ -267,4 +267,23 @@ form button:hover {
   color: #333;
 }
 
+.notice {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.notice li {
+  color: #cc0000; 
+  font-weight: bold;
+}
+
+.notice li::before {
+  content: "•"; 
+  color: #cc0000;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
 }
