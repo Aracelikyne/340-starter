@@ -198,66 +198,73 @@ footer {
   }
   
   form {
-  max-width: 500px;
+  max-width: 600px;
   margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #4a4a4a; /* Dark gray container */
-  border-radius: 10px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 form fieldset {
-  background-color: #00cffc; /* Using your site's primary blue */
-  border: none;
-  border-radius: 8px;
-  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+}
+
+form legend {
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
 }
 
 form label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: #000; 
 }
 
 form p {
-    margin-top: 0;
+  margin-top: -0.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #555; 
 }
 
 form input,
 form textarea,
 form select {
+  display: block;
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
+  padding: 0.8rem;
+  border: 1px solid #757575; 
   border-radius: 5px;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  color: #000;
 }
 
 form button {
   display: block;
   width: 100%;
-  padding: 0.75rem;
-  background-color: #333; /* Matching your nav bar */
-  color: white;
+  padding: 0.8rem;
+  background-color: #333; 
+  color: white; 
   border: none;
   border-radius: 5px;
   font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
 form button:hover {
-  background-color: #555;
+  background-color: #00cffc;
+  color: #333;
 }
 
-.notice {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 2px solid red;
-  background-color: #ffcccc;
-  color: #b30000;
-  list-style-type: none;
-  border-radius: 5px;
-}
-  
 }
