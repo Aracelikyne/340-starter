@@ -171,33 +171,7 @@ footer {
   text-align: center;
 }
 
-@media screen and (min-width: 768px) {
-  .info-boxes {
-    flex-direction: row;
-  }
-
-  .upgrade-box {
-    width: 50%;
-    padding: 15px;
-    order: 1;
-  }
-  
-  .review-box {
-    width: 50%;
-    padding: 15px;
-    order: 2;
-  }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url('../images/site/checkerboard.jpg');
-    background-repeat: repeat;
-  }
-
-  #wrapper {
-    border: 4px solid #00cffc;
-  }
-  
-  form {
+form {
   max-width: 600px;
   margin: 2rem auto;
   padding: 1rem;
@@ -301,4 +275,31 @@ input:not(:placeholder-shown):invalid {
 input:not(:placeholder-shown):valid {
   background-color: rgb(122, 193, 122);
 }
+
+
+@media screen and (min-width: 768px) {
+  .info-boxes {
+    flex-direction: row;
+  }
+
+  .upgrade-box {
+    width: 50%;
+    padding: 15px;
+    order: 1;
+  }
+  
+  .review-box {
+    width: 50%;
+    padding: 15px;
+    order: 2;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../images/site/checkerboard.jpg');
+    background-repeat: repeat;
+  }
+
+  #wrapper {
+    border: 4px solid #00cffc;
+  }
 }
