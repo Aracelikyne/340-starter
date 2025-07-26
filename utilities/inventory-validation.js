@@ -33,7 +33,7 @@ validate.addInventoryRules = () => {
     body("inv_price").trim().isDecimal().withMessage("Please provide a valid price."),
     body("inv_miles").trim().isInt({ min: 0 }).withMessage("Please provide valid miles."),
     body("inv_color").trim().isLength({ min: 1 }).withMessage("Please provide a color."),
-    body("classification_id").trim().isInt().withMessage("Please select a classification."),
+    body("classification_id").trim().notEmpty().withMessage("Please select a classification."),
   ];
 };
 
