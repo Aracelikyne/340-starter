@@ -130,7 +130,7 @@ validate.checkClassificationData = async (req, res, next) => {
             errors,
             title: "Add Classification",
             nav,
-            classification_name: classification_name,
+            classification_name
         })
         return
     }
