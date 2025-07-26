@@ -261,30 +261,22 @@ form button:hover {
 }
 
 input,
-textarea {
+textarea,
+select {
   transition: background-color 0.3s ease-in-out;
 }
 
-
 input:invalid,
-textarea:invalid {
-  background-color: rgb(193, 122, 122); 
+textarea:invalid,
+select:invalid {
+  background-color: rgb(255, 230, 230); 
 }
 
 input:valid,
-textarea:valid {
-  background-color: rgb(122, 193, 122); 
+textarea:valid,
+select:valid {
+  background-color: rgb(230, 255, 230);
 }
-
-input:required:placeholder-shown,
-textarea:required:placeholder-shown {
-  background-color: #fff; 
-}
-
-textarea:placeholder-shown {
-    background-color: #fff;
-}
-
 
 @media screen and (min-width: 768px) {
   .info-boxes {
