@@ -286,15 +286,19 @@ form button:hover {
   margin-left: -1em;
 }
 
+input {
+  transition: background-color 0.3s ease-in-out;
+}
+
 input:required:invalid {
-  border-left: 5px solid red;
+  background-color: rgb(193, 122, 122);
 }
 
 input:not(:placeholder-shown):invalid {
-  border-left: 5px solid red;
+  background-color: rgb(193, 122, 122);
 }
 
 input:not(:placeholder-shown):valid {
-  border-left: 5px solid green;
+  background-color: rgb(122, 193, 122);
 }
 }
