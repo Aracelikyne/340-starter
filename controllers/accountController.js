@@ -1,5 +1,5 @@
 const utilities = require("../utilities");
-const accountModel = require("../models/accountModel");
+const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
