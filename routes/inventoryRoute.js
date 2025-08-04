@@ -6,34 +6,48 @@ const invValidate = require("../utilities/inventory-validation")
 const utilities = require("../utilities/")
 
 // Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 
 // Route to build inventory by detail view
-router.get("/detail/:invId", invController.buildByInvId);
+router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId));
 
 //Route to build management view
-router.get("/", invController.buildManagement);
+router.get(
+  "/", 
+  utilities.checkAuthorization,
+  utilities.handleErrors(invController.buildManagement)
+);
 
 // Route to build the add classification view
-router.get("/add-classification", invController.buildAddClassification);
+router.get(
+  "/add-classification", 
+  utilities.checkAuthorization,
+  utilities.handleErrors(invController.buildAddClassification)
+);
 
 //Route to build the add inventory view
-router.get("/add-inventory", invController.buildAddInventory);
+router.get(
+  "/add-inventory",
+  utilities.checkAuthorization,
+  utilities.handleErrors(invController.buildAddInventory)
+);
 
 // Process the new classification data
 router.post(
-    "/add-classification",
-    invValidate.addClassificationRules(),
-    invValidate.checkClassificationData,
-    utilities.handleErrors(invController.addClassification)
+  "/add-classification",
+  utilities.checkAuthorization,
+  invValidate.addClassificationRules(),
+  invValidate.checkClassificationData,
+  utilities.handleErrors(invController.addClassification)
   );
   
 // Process the new inventory data
 router.post(
-"/add-inventory",
-invValidate.addInventoryRules(),
-invValidate.checkData,
-utilities.handleErrors(invController.addInventory)
+  "/add-inventory",
+  utilities.checkAuthorization,
+  invValidate.addInventoryRules(),
+  invValidate.checkData,
+  utilities.handleErrors(invController.addInventory)
 );
 
 module.exports = router;
