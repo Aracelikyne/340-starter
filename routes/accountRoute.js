@@ -1,0 +1,27 @@
+// Route to build the update view
+router.get(
+  "/update/:accountId",
+  utilities.handleErrors(accountController.buildUpdateView)
+);
+
+// Process the account update
+router.post(
+  "/update-account",
+  validate.updateAccountRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(accountController.handleUpdateAccount)
+);
+
+// Process the password change
+router.post(
+  "/change-password",
+  validate.changePasswordRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(accountController.handleChangePassword)
+);
+
+// Logout
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwt");
+  res.redirect("/");
+});
