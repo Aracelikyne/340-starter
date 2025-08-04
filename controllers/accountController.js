@@ -1,6 +1,7 @@
 const utilities = require("../utilities");
 const accountModel = require("../models/accountModel");
 const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator");
 
 const accountController = {};
 
@@ -41,6 +42,21 @@ async function handleUpdateAccount(req, res, next) {
   let nav = await utilities.getNav();
   const { account_id, account_firstname, account_lastname, account_email } =
     req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      req.flash("notice", "Please correct the errors below.");
+      res.status(501).render("account/update", {
+        title: "Update Account Information",
+        nav,
+        errors: errors.array(),
+        account_id,
+        account_firstname,
+        account_lastname,
+        account_email,
+      });
+      return;
+    }
   const updateResult = await accountModel.updateAccount(
     account_id,
     account_firstname,
@@ -74,6 +90,21 @@ async function handleUpdateAccount(req, res, next) {
 async function handleChangePassword(req, res, next) {
   let nav = await utilities.getNav();
   const { account_id, account_password } = req.body;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    req.flash("notice", "Please correct the errors below.");
+    res.status(501).render("account/update", {
+      title: "Update Account Information",
+      nav,
+      errors: errors.array(),
+      account_id: accountData.account_id,
+      account_firstname: accountData.account_firstname,
+      account_lastname: accountData.account_lastname,
+      account_email: accountData.account_email,
+    });
+    return;
+  }
   const hashedPassword = await bcrypt.hash(account_password, 10);
   const updateResult = await accountModel.updatePassword(
     account_id,
