@@ -6,7 +6,7 @@ const validate = {};
 /* **********************************
  * Update Account Validation Rules
  * ********************************* */
-const updateAccountRules = () => {
+validate.updateAccountRules = () => {
   return [
     body("account_firstname")
       .trim()
@@ -34,7 +34,7 @@ const updateAccountRules = () => {
 /* **********************************
  * Change Password Validation Rules
  * ********************************* */
-const changePasswordRules = () => {
+validate.changePasswordRules = () => {
   return [
     body("account_password")
       .trim()
