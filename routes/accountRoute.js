@@ -1,3 +1,9 @@
+const express = require("express");
+const router = new express.Router();
+const accountController = require("../controllers/accountController");
+const validate = require("../utilities/account-validation");
+const utilities = require("../utilities/");
+
 // Route to build the update view
 router.get(
   "/update/:accountId",
@@ -25,3 +31,5 @@ router.get("/logout", (req, res) => {
   res.clearCookie("jwt");
   res.redirect("/");
 });
+
+module.exports = router;

@@ -1,3 +1,5 @@
+const pool = require("../database/") 
+
 /* *****************************
  * Get account by account_id
  ***************************** */
@@ -10,6 +12,20 @@ async function getAccountById(account_id) {
     return result.rows[0];
   } catch (error) {
     return new Error("No matching account found");
+  }
+}
+
+/* *****************************
+* Get account by email
+* *************************** */
+async function getAccountByEmail (account_email) {
+  try {
+    const result = await pool.query(
+      'SELECT * FROM account WHERE account_email = $1',
+      [account_email])
+    return result.rows[0]
+  } catch (error) {
+    return new Error("No matching email found")
   }
 }
 
@@ -50,3 +66,10 @@ async function updatePassword(account_id, account_password) {
     console.error("model error: " + error);
   }
 }
+
+module.exports = {
+  getAccountById,
+  getAccountByEmail,
+  updateAccount,
+  updatePassword,
+};

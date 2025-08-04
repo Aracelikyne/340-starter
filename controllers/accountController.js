@@ -1,3 +1,9 @@
+const utilities = require("../utilities");
+const accountModel = require("../models/accountModel");
+const bcrypt = require("bcryptjs");
+
+const accountController = {};
+
 /* ****************************************
  * Build account management view
  * ************************************ */
@@ -87,3 +93,5 @@ async function handleChangePassword(req, res, next) {
     });
   }
 }
+
+module.exports = accountController;
