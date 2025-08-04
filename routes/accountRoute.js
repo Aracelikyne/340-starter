@@ -4,6 +4,12 @@ const accountController = require("../controllers/accountController");
 const validate = require("../utilities/account-validation");
 const utilities = require("../utilities/");
 
+// Route to build login view
+router.get(
+  "/login",
+  utilities.handleErrors(accountController.buildLogin)
+)
+
 // Route to build the update view
 router.get(
   "/update/:accountId",
