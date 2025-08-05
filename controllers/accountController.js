@@ -1,6 +1,7 @@
 const utilities = require("../utilities");
 const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
 
 const accountController = {};
@@ -8,7 +9,7 @@ const accountController = {};
 /* ****************************************
  * Build account management view
  * ************************************ */
-async function buildAccountManagement(req, res, next) {
+accountController.buildAccountManagement = async function (req, res, next) {
   let nav = await utilities.getNav();
   res.render("account/management", {
     title: "Account Management",
@@ -20,7 +21,7 @@ async function buildAccountManagement(req, res, next) {
 /* ****************************************
  * Build update view
  * ************************************ */
-async function buildUpdateView(req, res, next) {
+accountController.buildUpdateView = async function (req, res, next) {
   const account_id = parseInt(req.params.accountId);
   let nav = await utilities.getNav();
   const accountData = await accountModel.getAccountById(account_id);
@@ -97,7 +98,7 @@ accountController.registerAccount = async function (req, res) {
 /* ****************************************
  * Process login request
  * ************************************ */
-accountController.accountLogin = async function (req, res) {
+accountController.accountLogin = async function (req, res, next) {
   let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
   const accountData = await accountModel.getAccountByEmail(account_email)
@@ -132,14 +133,14 @@ accountController.accountLogin = async function (req, res) {
       })
     }
   } catch (error) {
-    return new Error('Access Forbidden')
+    return next(error)
   }
 }
 
 /* ****************************************
  * Handle account update
  * ************************************ */
-async function handleUpdateAccount(req, res, next) {
+accountController.handleUpdateAccount = async function (req, res, next) {
   let nav = await utilities.getNav();
   const { account_id, account_firstname, account_lastname, account_email } =
     req.body;
@@ -188,17 +189,18 @@ async function handleUpdateAccount(req, res, next) {
 /* ****************************************
  * Handle password change
  * ************************************ */
-async function handleChangePassword(req, res, next) {
+accountController.handleChangePassword = async function (req, res, next) {
   let nav = await utilities.getNav();
   const { account_id, account_password } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     req.flash("notice", "Please correct the errors below.");
+    const accountData = await accountModel.getAccountById(account_id);
     res.status(501).render("account/update", {
       title: "Update Account Information",
       nav,
-      errors: errors.array(),
+      errors: errors,
       account_id: accountData.account_id,
       account_firstname: accountData.account_firstname,
       account_lastname: accountData.account_lastname,
@@ -224,18 +226,6 @@ async function handleChangePassword(req, res, next) {
       account_id,
     });
   }
-}
-
-/* ****************************************
- * Build login view
- * ************************************ */
-accountController.buildLogin = async function (req, res, next) {
-  let nav = await utilities.getNav()
-  res.render("account/login", {
-    title: "Login",
-    nav,
-    errors: null,
-  })
 }
 
 module.exports = accountController;
