@@ -21,6 +21,17 @@ router.get(
   utilities.handleErrors(accountController.buildAccountManagement)
 );
 
+// Route to build registration view
+router.get("/register", utilities.handleErrors(accountController.buildRegister));
+
+// Process the registration data
+router.post(
+  "/register",
+  validate.registrationRules(),
+  validate.checkRegData, // You will need to create this in account-validation.js
+  utilities.handleErrors(accountController.registerAccount)
+);
+
 // Route to build the update view
 router.get(
   "/update/:accountId",
