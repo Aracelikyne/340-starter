@@ -97,4 +97,6 @@ module.exports = {
   getAccountByEmail,
   updateAccount,
   updatePassword,
+  checkExistingEmail,
+  registerAccount
 };
