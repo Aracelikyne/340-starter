@@ -8,7 +8,18 @@ const utilities = require("../utilities/");
 router.get(
   "/login",
   utilities.handleErrors(accountController.buildLogin)
-)
+);
+
+router.post(
+  "/login",
+  utilities.handleErrors(accountController.accountLogin)
+);
+
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountManagement)
+);
 
 // Route to build the update view
 router.get(
