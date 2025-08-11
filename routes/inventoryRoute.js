@@ -4,6 +4,7 @@ const router = new express.Router()
 const invController = require("../controllers/invController")
 const invValidate = require("../utilities/inventory-validation")
 const utilities = require("../utilities/")
+const reviewValidate = require("../utilities/review-validation")
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
@@ -48,6 +49,14 @@ router.post(
   invValidate.addInventoryRules(),
   invValidate.checkData,
   utilities.handleErrors(invController.addInventory)
+);
+
+//Process the new review data
+router.post(
+  "/add-review",
+  reviewValidate.reviwewRules(),
+  reviewValidate.checkReviewData,
+  utilities.handleErrors(invController.addReview)
 );
 
 module.exports = router;

@@ -153,4 +153,29 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
+/* **************************************
+* Build the reviews view HTML
+* ************************************ */
+Util.buildReviews = async function(reviews) {
+    let reviewsHTML = '<div id="reviews-section">';
+    if (reviews && reviews.length > 0) {
+        reviewsHTML += '<h3>Customer Reviews</h3>';
+        reviewsHTML += '<ul>';
+        reviews.forEach(review => {
+            const reviewDate = new Date(review.review_date).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+            reviewsHTML += '<li>';
+            reviewsHTML += `<p><strong>${review.account_firstname} ${review.account_lastname.charAt(0)}.</strong> wrote on ${reviewDate}:</p>`;
+            reviewsHTML += `<p>"${review.review_text}"</p>`;
+            reviewsHTML += '</li>';
+        });
+        reviewsHTML += '</ul>';
+    } else {
+        reviewsHTML += '<p>Be the first to write a review!</p>';
+    }
+    reviewsHTML += '</div>';
+    return reviewsHTML;
+}
+
 module.exports = Util
