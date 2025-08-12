@@ -35,7 +35,10 @@ invCont.buildByInvId = async function (req, res, next) {
   res.render("./inventory/detail", {
     title: vehicleName,
     nav,
-    detail
+    detail,
+    reviewsHTML,
+    errors: null,
+    inv_id,
   }); 
 };
 

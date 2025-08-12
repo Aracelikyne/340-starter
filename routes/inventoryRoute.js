@@ -54,7 +54,7 @@ router.post(
 //Process the new review data
 router.post(
   "/add-review",
-  reviewValidate.reviwewRules(),
+  reviewValidate.reviewRules(),
   reviewValidate.checkReviewData,
   utilities.handleErrors(invController.addReview)
 );
